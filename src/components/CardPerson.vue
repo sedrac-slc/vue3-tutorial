@@ -2,7 +2,7 @@
     <div
         class="m-auto w-full text-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div class="flex flex-col items-center p-2">
-            <p>{{ titulo }}</p>
+            <p class="dark:text-white">{{ titulo }}</p>
             <img class="w-24 h-24  rounded-full shadow-lg" :src="person.avatar" alt="Bonnie image" />
             <h6 class="mb-1 text-sm font-medium text-gray-800 dark:text-white"> {{ person.email }}</h6>
             <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{ person.first_name }} {{ person.last_name }}</h5>
