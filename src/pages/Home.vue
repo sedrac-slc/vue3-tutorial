@@ -1,5 +1,7 @@
+
 <template>
-    <h1 class="dark:text-white">Home</h1>
+    <ListUserReqres/>
 </template>
 <script setup>
+    import ListUserReqres from '@/components/ListUserReqres.vue';
 </script>
