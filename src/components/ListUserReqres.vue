@@ -7,6 +7,7 @@
       @selected="addInListSelected($event)"
       :selected="existInListSelected(person)"
       v-if="!error"
+      :open="true"
     />
     <div v-else>{{ error }}</div>
   </div>
