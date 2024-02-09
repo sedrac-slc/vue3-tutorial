@@ -1,8 +1,8 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-
 import App from './App.vue';
 import router from './router';
+import 'boxicons';
 
 import './assets/index.css';
 
@@ -11,7 +11,7 @@ const app = createApp(App);
 
 app.use(pinia);
 app.use(router);
-app.mount('#app')
+app.mount('#app');
 
 /*
 app.directive("email",{

@@ -1,5 +1,5 @@
 <template>
-    <CardPerson :person="person" v-if="person != null" :open="false" class="mt-5"/>
+    <CardPerson :person="person" v-if="person != null" :open="false" class="mt-5" :isRole="true"/>
 </template>
 <script setup>
 

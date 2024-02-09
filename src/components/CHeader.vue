@@ -14,15 +14,14 @@
                         d="M1 1h15M1 7h15M1 13h15" />
                 </svg>
             </button>
-
-            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                <button type="button" @click="toggleDark()"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-3">
-                    {{ isDark ? "Dark" : "light" }}
+            <div class="flex md:order-2 space-x-3 md:space-x-2 rtl:space-x-reverse">
+                <button type="button" @click="toggleDark()" class="dark:text-white dark:before:bg-white">
+                    <box-icon name='sun' type='solid'  v-if="isDark"></box-icon>
+                    <box-icon name='moon' type='solid' v-else></box-icon>
                 </button>
-                <button type="button" @click="toggle()"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm ml-2 px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    {{ isFullscreen ? "Min Screen" : "Full Screen" }}
+                <button type="button" @click="toggle()" class="dark:text-white dark:before:bg-white">
+                    <box-icon name='exit-fullscreen' v-if="isFullscreen"></box-icon>
+                    <box-icon name='fullscreen' v-else></box-icon>
                 </button>
             </div>
 
@@ -32,7 +31,8 @@
                     <li v-for="menu in menus" :key="menu.id">
                         <router-link :to="{ name: menu.routeName }" v-if="menu.active"
                             class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-                            aria-current="page"> {{ menu.name }}</router-link>
+                            aria-current="page"> {{ menu.name }} 
+                        </router-link>
                         <router-link :to="{ name: menu.routeName }" v-else
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">{{
                                 menu.name }}</router-link>

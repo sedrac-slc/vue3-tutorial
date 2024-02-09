@@ -34,30 +34,51 @@
           >Abrir</router-link
         >
       </div>
+      <div class="mt-2" v-if="isRole">
+        <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleciona cargos</label>
+        <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        v-model="roleSelected">
+          <option value="" selected>Seleciona o cargo</option>
+          <option value="ADMIN">Administrador</option>
+          <option value="USER">User</option>
+        </select>          
+      </div>      
     </div>
   </div>
 </template>
 <script setup>
-import { inject } from "vue";
+import { inject, watch, ref } from "vue";
+import { useRoles } from '@/store/roles';
+
 import RouterName from "@/router-names";
 
-defineProps({
+const props = defineProps({
   person: {
-    type: Object,
-    required: true,
-    default: () => ({
+      role: "USER",
       avatar: "",
       email: "",
       first_name: "",
       last_name: "",
       id: 0,
-    }),
   },
   selected: false,
   open: true,
+  isRole: false,
 });
 
 defineEmits(["selected"]);
 
 const titulo = inject("titulo", "Usuário") || "";
+const roleStore = useRoles();
+
+const {addRole} = roleStore;
+
+const roleSelected = ref('');
+
+watch(roleSelected, (newValue) => {
+  const user = props.person;
+  user.role = newValue;
+  addRole(user)
+})
+
 </script>
